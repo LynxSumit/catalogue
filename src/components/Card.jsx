@@ -1,4 +1,4 @@
-import * as React from 'react';
+/* eslint-disable react/prop-types */
 import {Card as CatalogueCard} from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -9,12 +9,12 @@ export default function Card({img , title, desc , price}) {
   return (
     <CatalogueCard  sx={{ maxWidth: 345, bgcolor : "#e8e9eb", }}>
       <CardActionArea>
-        <CardMedia
+         <CardMedia
           component="img"
-          height="140"
+          height="100%"
           image={img}
-          alt="green iguana"
-        />
+          alt={title}
+        /> 
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {title}
@@ -23,12 +23,12 @@ export default function Card({img , title, desc , price}) {
           {desc}
           </Typography>
         </CardContent>
-      </CardActionArea>
       <CardActions color='primary'>
         <Button size="small"   variant='text' sx={{color : "black", background : "#cfcfcf"}}>
           {price}
         </Button>
       </CardActions>
+      </CardActionArea>
     </CatalogueCard>
   );
 }

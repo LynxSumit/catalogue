@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './components/Navbar'
 import Card from './components/Card'
@@ -69,10 +66,9 @@ function App() {
 
 
   return (
-    <>
-     
+    <> 
      <Navbar/>
-     <Box sx={{display : "flex", gap : "2vmax", flexWrap : "wrap" ,padding : "4vmax 1vmax", margin : "auto", justifyContent : "center" }}>
+     <Box sx={{display : "flex", gap : "2vmax", flexWrap : "wrap" ,padding : "2vmax 1vmax", margin : "auto", justifyContent : "center" }}>
     {
       data.map(item => (
         <Card key={item.title} img={item.img} title={item.title} desc={item.description} price={item.price}/>

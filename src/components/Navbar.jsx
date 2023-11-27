@@ -9,12 +9,11 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import {  Category } from '@mui/icons-material';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -121,21 +120,14 @@ export default function Navbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
+    
       <MenuItem>
         <IconButton
           size="large"
           aria-label="show 17 new notifications"
           color="inherit"
         >
-          <Badge badgeContent={17} color="error">
+          <Badge badgeContent={1} color="error">
             <NotificationsIcon />
           </Badge>
         </IconButton>
@@ -157,23 +149,21 @@ export default function Navbar() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1}}>
       <AppBar position="static" variant='outlined' sx={{height : 90 , display : "flex", justifyContent : "center", color : "white", background : "#555e68"}} color='transparent'>
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
+         <Box sx={{display : {xs : "block", md : "none", margin : "0 2vmax"}}}>
+            <Category/> 
 
-            <MenuIcon />
-          </IconButton>
+
+        {/* Company Logo */}
+
+
+         </Box>
           <Box
           sx={{ display: { xs: 'block', sm: 'none' } }}
           >
-            <Search   sx={{display : "flex"}} >
+            <Search   sx={{display : "flex",}} >
             <SearchIconWrapper   >
               <SearchIcon />
             </SearchIconWrapper>
@@ -188,33 +178,25 @@ export default function Navbar() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
+            sx={{ display: { xs: 'none', sm: 'flex', alignItems : "center"  } }}
           >
+            <Category sx={{margin : "0 1vmax", fontSize : 40}}/> 
+
           Catalogue Company
           </Typography>
-        
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-           
-            <Search sx={{display : "flex"}} >
+         <Box sx={{display : {xs : "none", md: "flex"}, justifyContent : "center", margin : "auto"}}> <Search sx={{display : "flex"}} >
             <SearchIconWrapper  >
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-            sx={{}}
+            sx={{width : "40vw"}}
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
             />
-          </Search>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+          </Search></Box>
+        
+          
+          <Box sx={{ display: { xs: 'none', md: 'flex' },  }}>
             <IconButton
               size="large"
               edge="end"
@@ -224,7 +206,7 @@ export default function Navbar() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <AccountCircle sx={{fontSize : 40}} />
             </IconButton>
            
           </Box>
