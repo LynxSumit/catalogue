@@ -160,21 +160,9 @@ export default function Navbar() {
 
 
          </Box>
-          <Box
-          sx={{ display: { xs: 'block', sm: 'none' } }}
-          >
-            <Search   sx={{display : "flex",}} >
-            <SearchIconWrapper   >
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-          
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-          </Box>
-          <Typography
+        
+        <Box sx={{display : 'flex', justifyContent : 'space-between', width : "100%"}}>
+        <Typography
             variant="h6"
             noWrap
             component="div"
@@ -182,18 +170,9 @@ export default function Navbar() {
           >
             <Category sx={{margin : "0 1vmax", fontSize : 40}}/> 
 
-          Catalogue Company
+          
           </Typography>
-         <Box sx={{display : {xs : "none", md: "flex"}, justifyContent : "center", margin : "auto"}}> <Search sx={{display : "flex"}} >
-            <SearchIconWrapper  >
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-            sx={{width : "40vw"}}
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search></Box>
+        
         
           
           <Box sx={{ display: { xs: 'none', md: 'flex' },  }}>
@@ -210,6 +189,7 @@ export default function Navbar() {
             </IconButton>
            
           </Box>
+        </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"

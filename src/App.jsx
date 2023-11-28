@@ -3,79 +3,25 @@ import Navbar from './components/Navbar'
 import Card from './components/Card'
 import { Box } from '@mui/material'
 import Footer from './components/Footer'
+import Header from "./components/Header.jsx"
+import Login from "./components/Login.jsx"
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './pages/Home.jsx'
+import {ToastContainer} from "react-toastify"
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const data = [
-    {
-      img: "https://source.unsplash.com/800x600/?sports/table-tennis",
-      title: "Lorem Ipsum Product 1",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac justo nec urna vestibulum.",
-      price: "$49.99",
-    },
-    {
-      img: "https://source.unsplash.com/800x600/?sports/cricket",
-      title: "Lorem Ipsum Product 2",
-      description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-      price: "$34.95",
-    },
-    {
-      img: "https://source.unsplash.com/800x600/?sports/rugby",
-      title: "Lorem Ipsum Product 3",
-      description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.",
-      price: "$79.99",
-    },
-    {
-      img: "https://source.unsplash.com/800x600/?sports/hockey",
-      title: "Lorem Ipsum Product 1",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac justo nec urna vestibulum.",
-      price: "$49.99",
-    },
-    {
-      img: "https://source.unsplash.com/800x600/?sports/football",
-      title: "Lorem Ipsum Product 2",
-      description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-      price: "$34.95",
-    },
-    {
-      img: "https://source.unsplash.com/800x600/?sports/cricket",
-      title: "Lorem Ipsum Product 3",
-      description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.",
-      price: "$79.99",
-    },
-    {
-      img: "https://source.unsplash.com/800x600/?sports/badminton",
-      title: "Lorem Ipsum Product 1",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac justo nec urna vestibulum.",
-      price: "$49.99",
-    },
-    {
-      img: "https://source.unsplash.com/800x600/?sports/badminton",
-      title: "Lorem Ipsum Product 2",
-      description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-      price: "$34.95",
-    },
-    {
-      img: "https://source.unsplash.com/800x600/?sports/badminton",
-      title: "Lorem Ipsum Product 3",
-      description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.",
-      price: "$79.99",
-    },
-
-  ];
   
-
 
   return (
     <> 
-     <Navbar/>
-     <Box sx={{display : "flex", gap : "2vmax", flexWrap : "wrap" ,padding : "2vmax 1vmax", margin : "auto", justifyContent : "center" }}>
-    {
-      data.map(item => (
-        <Card key={item.title} img={item.img} title={item.title} desc={item.description} price={item.price}/>
-      ) )
-    }
-     </Box>
-     <Footer/>
+    <BrowserRouter>
+<Routes>
+<Route path='/login' element={<Login/>}/>
+<Route path='/' exact element={<Home/>}/>
+</Routes>
+     <ToastContainer/>
+    </BrowserRouter>
     </>
   )
 }
