@@ -50,7 +50,7 @@ toast.success("Filter Applied")
           },
         },
       }}
-        indicator=<KeyboardArrowDown/>
+        indicator={<KeyboardArrowDown/>}
           placeholder="no. of rows"
           name='rows'
           required
