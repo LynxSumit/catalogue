@@ -72,7 +72,7 @@ toast.success("Filter Applied")
           },
         },
       }}
-        indicator=<KeyboardArrowDown/>       {...register("columns", {required : true})}  placeholder="no. of columns"
+        indicator={<KeyboardArrowDown/> }      {...register("columns", {required : true})}  placeholder="no. of columns"
           name='columns'
           required >
      
