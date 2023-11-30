@@ -1,27 +1,25 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-email : "",
-password : "",
-
-}
+  email: "",
+  password: "",
+};
 
 export const loginSlice = createSlice({
-  name: 'login',
+  name: "login",
   initialState,
   reducers: {
     login: (state, action) => {
       const credentials = {
-     email : action.payload.email,
-     password : action.payload.password
+        email: action.payload.email,
+        password: action.payload.password,
       };
 
-   state = credentials
-    
-     console.log(state)
+      const { email, password } = credentials;
+      state.email = email;
+      state.password = password;
+    },
   },
-
-}
 });
 
 // this is for dispatch
