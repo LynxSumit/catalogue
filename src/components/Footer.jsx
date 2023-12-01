@@ -159,9 +159,9 @@ export default function Footer() {
           <DialogTitle
             sx={{ fontSize: 25, textAlign: "center", width: "100%" }}
           >
-            Update Header
+            Update SocialMedia Usernames
           </DialogTitle>
-          <DialogContent>Fill data to update Header</DialogContent>
+          <DialogContent>Enter Social media usernames</DialogContent>
           <form onSubmit={handleSubmit(modifyHeader)}>
             <Stack spacing={2}>
               <FormControl>
