@@ -1,29 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  email: "",
-  password: "",
+  credentials: {
+    email: "",
+    password: "",
+  },
 };
 
 export const loginSlice = createSlice({
-  name: "login",
+  name: "Login",
   initialState,
   reducers: {
-    login: (state, action) => {
-      const credentials = {
-        email: action.payload.email,
-        password: action.payload.password,
-      };
-
-      const { email, password } = credentials;
-      state.email = email;
-      state.password = password;
+    setLogin: (state, action) => {
+      state.credentials = action.payload.value;
     },
   },
 });
 
 // this is for dispatch
-export const { login } = loginSlice.actions;
+export const { setLogin } = loginSlice.actions;
 
 // this is for configureStore
 export default loginSlice.reducer;

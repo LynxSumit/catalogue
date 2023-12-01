@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { login } from '../reducers/loginSlice';
+import {  setLogin } from '../reducers/loginSlice';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import  { useState, useEffect } from 'react';
@@ -20,7 +20,7 @@ import Typography from '@mui/joy/Typography';
 import Stack from '@mui/joy/Stack';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
-import { Category,  Google } from '@mui/icons-material';
+import { Category,  Copyright,  Google } from '@mui/icons-material';
 import { useForm } from 'react-hook-form';
 import { Alert } from '@mui/joy';
 function ColorSchemeToggle(props) {
@@ -65,7 +65,7 @@ export default function Login() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const submitHandler = async (data) => {
-    dispatch(login(data));
+    dispatch(setLogin({value : data}));
     navigate("/change-layout")
     toast.success("Logged in successfully")
     reset();
@@ -152,32 +152,10 @@ export default function Login() {
           >
             <Stack gap={4} sx={{ mb: 2 }}>
               <Stack textAlign={'center'} gap={1}>
-                <Typography level="h3">Sign in</Typography>
+                <Typography level="h3" padding={1} sx={{width : 'fit-content', margin : 'auto'}}  borderBottom={'1px solid white'}>Sign in</Typography>
               
               </Stack>
-              <Button
-                variant="soft"
-                color="neutral"
-                fullWidth
-                startDecorator={<Google />}
-              >
-                Continue with Google
-              </Button>
-            </Stack>
-            <Divider
-              sx={(theme) => ({
-                [theme.getColorSchemeSelector('light')]: {
-                  color: { xs: '#FFF', md: 'text.tertiary' },
-                  '--Divider-lineColor': {
-                    xs: '#FFF',
-                    md: 'var(--joy-palette-divider)',
-                  },
-                },
-              })}
-            >
-              or
-            </Divider>
-            <Stack gap={4} sx={{ mt: 2 }}>
+              <Stack gap={4} sx={{ mt: 1 }}>
               <form
                 onSubmit={handleSubmit(submitHandler) }
               >
@@ -205,10 +183,37 @@ export default function Login() {
                 </Stack>
               </form>
             </Stack>
+            
+            </Stack>
+            <Divider
+              sx={(theme) => ({
+                [theme.getColorSchemeSelector('light')]: {
+                  color: { xs: '#FFF', md: 'text.tertiary' },
+                  '--Divider-lineColor': {
+                    xs: '#FFF',
+                    md: 'var(--joy-palette-divider)',
+                  },
+                },
+              })}
+            >
+              or
+            </Divider>
+          
+
+            <Button
+                variant="soft"
+                color="neutral"
+                fullWidth
+                startDecorator={<Google />}
+              >
+                Continue with Google
+              </Button>
+
+
           </Box>
           <Box component="footer" sx={{ py: 3 }}>
-            <Typography level="body-xs" textAlign="center">
-            Powered by NuLark Solutions {new Date().getFullYear()}
+            <Typography display={'flex'} alignItems={'center'} justifyContent={'center'} level="body-xs" textAlign="center">
+           {<Copyright/>} Powered by NuLark Solutions 
             </Typography>
           </Box>
         </Box>

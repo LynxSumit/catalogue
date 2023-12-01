@@ -1,19 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  rows: "3",
-  columns: "4",
-}
+  data: {
+    rows: "3",
+    columns: "4",
+  },
+};
 
 export const layoutSlice = createSlice({
-  name: 'Change Layout',
+  name: "Layout",
   initialState,
   reducers: {
     changeLayout: (state, action) => {
-      const { rows, columns } = action.payload;
-      // Update the state properties instead of assigning a new object
-      state.rows = rows;
-      state.columns = columns;
+      state.data = action.payload.value;
     },
   },
 });
