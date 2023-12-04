@@ -1,5 +1,4 @@
 import Navbar from "../components/Navbar";
-// import Header from '../components/Header'
 import { Box } from "@mui/material";
 import Card from "../components/Card";
 import Footer from "../components/Footer";
@@ -125,7 +124,8 @@ const Home = () => {
     gridTemplateColumns: { md: `repeat(${columns}, 1fr)`, xs: "1fr" },
     gridTemplateRows: { md: `repeat(${rows}, 1fr)`, xs: "1fr" },
     gap: "2vmax",
-    margin: "1vmax",
+    margin: "3vmax",
+    height : 'auto',
   };
   const displayedData = data.slice(0, columns * rows);
 

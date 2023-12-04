@@ -4,17 +4,7 @@ import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { changeLayout } from "../reducers/layoutSlice";
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardOverflow,
-  Divider,
-  FormControl,
-  FormLabel,
-  Stack,
-} from "@mui/joy";
+import { Box, Button, Divider, FormControl, Stack } from "@mui/joy";
 import { useForm } from "react-hook-form";
 import Typography from "@mui/material/Typography";
 import { toast } from "react-toastify";
@@ -48,6 +38,7 @@ export default function ChangeCatalogue() {
           spacing={4}
           sx={{
             display: "flex",
+            flexDirection: "column",
             width: "60vw",
             maxWidth: "800px",
             mx: "auto",
@@ -61,121 +52,124 @@ export default function ChangeCatalogue() {
             },
           }}
         >
-          <Card>
-            <Box sx={{ mb: 1 }}>
-              <Typography level="title-md" textAlign={"center"}>
-                {" "}
-                Select Rows & Columns for Catalogue
-              </Typography>
-            </Box>
+          <Stack>
+            <Typography
+              sx={{
+                color: "#000",
+                padding: "1vmax",
+                textAlign: "center",
+                textTransform: "uppercase",
+                fontSize: "1.4vmax",
+                fontWeight: 800,
+              }}
+            >
+              {" "}
+              Select Rows & Columns for Catalogue
+            </Typography>
+
             <Divider />
 
-            <form
-              style={{ justifyContent: "center" }}
-              onSubmit={handleSubmit(updateHandler)}
-            >
-              <Stack
-                direction="row"
-                spacing={3}
-                sx={{ display: { md: "flex" }, my: 1 }}
+            <form style={{}} onSubmit={handleSubmit(updateHandler)}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: { xs: "column", md: "row" },
+                  margin: "2vmax",
+                  gap: 4,
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
               >
-                <Stack
-                  spacing={2}
-                  sx={{ flexGrow: 1, display: "grid", placeItems: "center" }}
-                >
-                  <Stack spacing={1}>
-                    <FormLabel>Rows</FormLabel>
-                    <FormControl
-                      sx={{
-                        display: {
-                          sm: "flex-column",
-                          md: "flex-row",
-                        },
-                        gap: 2,
-                      }}
-                    >
-                      <Select
-                        {...register("rows", { required: true })}
-                        sx={{
-                          width: 240,
-                          [`& .${selectClasses.indicator}`]: {
-                            transition: "0.2s",
-                            [`&.${selectClasses.expanded}`]: {
-                              transform: "rotate(-180deg)",
-                            },
-                          },
-                        }}
-                        indicator={<KeyboardArrowDown />}
-                        placeholder="no. of rows"
-                        name="rows"
-                        required
-                      >
-                        <Option value={1}>1</Option>
-                        <Option value={2}>2</Option>
-                        <Option value={3}>3</Option>
-                        <Option value={4}>4</Option>
-                        <Option value={5}>5</Option>
-                        <Option value={6}>6</Option>
-                      </Select>
-                    </FormControl>
-                    <FormControl
-                      sx={{
-                        display: {
-                          sm: "flex-column",
-                          md: "flex-row",
-                        },
-                        gap: 2,
-                      }}
-                    ></FormControl>
-                  </Stack>
-                  <Stack direction="row" spacing={2}>
-                    <FormControl>
-                      <FormLabel>Columns</FormLabel>
-                      <Select
-                        sx={{
-                          width: 240,
-                          [`& .${selectClasses.indicator}`]: {
-                            transition: "0.2s",
-                            [`&.${selectClasses.expanded}`]: {
-                              transform: "rotate(-180deg)",
-                            },
-                          },
-                        }}
-                        indicator={<KeyboardArrowDown />}
-                        {...register("columns", { required: true })}
-                        placeholder="no. of columns"
-                        name="columns"
-                        required
-                      >
-                        <Option value={3}>3</Option>
-                        <Option value={4}>4</Option>
-                        <Option value={5}>5</Option>
-                        <Option value={6}>6</Option>
-                        <Option value={7}>7</Option>
-                        <Option value={8}>8</Option>
-                        <Option value={9}>9</Option>
-                      </Select>
-                    </FormControl>
-                  </Stack>
-                </Stack>
-              </Stack>
-
-              <CardOverflow
-                sx={{ borderTop: "1px solid", borderColor: "divider" }}
-              >
-                <CardActions sx={{ alignSelf: "flex-end", pt: 2 }}>
-                  <Button
-                    color="neutral"
-                    type="submit"
-                    size="sm"
-                    variant="solid"
+                <Stack>
+                  <FormControl
+                    sx={{
+                      display: {
+                        sm: "flex-column",
+                        md: "flex-row",
+                      },
+                      gap: 2,
+                    }}
                   >
-                    Submit
-                  </Button>
-                </CardActions>
-              </CardOverflow>
+                    <Select
+                      {...register("rows", { required: true })}
+                      size="lg"
+                      sx={{
+                        width: 340,
+                        [`& .${selectClasses.indicator}`]: {
+                          transition: "0.2s",
+                          [`&.${selectClasses.expanded}`]: {
+                            transform: "rotate(-180deg)",
+                          },
+                        },
+                      }}
+                      indicator={<KeyboardArrowDown />}
+                      placeholder="no. of rows"
+                      name="rows"
+                      required
+                    >
+                      <Option value={1}>1</Option>
+                      <Option value={2}>2</Option>
+                      <Option value={3}>3</Option>
+                      <Option value={4}>4</Option>
+                      <Option value={5}>5</Option>
+                      <Option value={6}>6</Option>
+                    </Select>
+                  </FormControl>
+                  <FormControl
+                    sx={{
+                      display: {
+                        sm: "flex-column",
+                        md: "flex-row",
+                      },
+                      gap: 2,
+                    }}
+                  ></FormControl>
+                </Stack>
+                <Stack>
+                  <FormControl>
+                    <Select
+                      size="lg"
+                      sx={{
+                        width: 340,
+                        [`& .${selectClasses.indicator}`]: {
+                          transition: "0.2s",
+                          [`&.${selectClasses.expanded}`]: {
+                            transform: "rotate(-180deg)",
+                          },
+                        },
+                      }}
+                      indicator={<KeyboardArrowDown />}
+                      {...register("columns", { required: true })}
+                      placeholder="no. of columns"
+                      name="columns"
+                      required
+                    >
+                      <Option value={3}>3</Option>
+                      <Option value={4}>4</Option>
+                      <Option value={5}>5</Option>
+                      <Option value={6}>6</Option>
+                      <Option value={7}>7</Option>
+                      <Option value={8}>8</Option>
+                    </Select>
+                  </FormControl>
+                </Stack>
+
+                <Button
+                  color="neutral"
+                  type="submit"
+                  size="lg"
+                  variant="solid"
+                  sx={{
+                    bgcolor: "#000",
+                    color: "#fff",
+                    filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
+                  }}
+                >
+                  Go
+                </Button>
+              </Box>
             </form>
-          </Card>
+          </Stack>
         </Stack>
       </Box>
 

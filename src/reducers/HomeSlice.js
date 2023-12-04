@@ -1,13 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import Logo from "../assets/bgHeader.png"
 const initialState = {
   data: {
     title: "Catalogue Company ",
     subTitle:
       "lorem ipsum dolor sit amet, consectetur adip euismod tempor invid id vel dslui",
     background:
-      "https://images.unsplash.com/photo-1508615039623-a25605d2b022?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    backgroundColor: "black",
+      Logo,
   },
   card: {
     title: "Lorem Ipsum",
@@ -21,6 +20,10 @@ const initialState = {
     youtube: "John Doe",
     instagram: "John Doe",
     twitter: "John Doe",
+    companyAddress : 'lorem ipsumet dolor sit amet, consectet',
+    companyEmail : 'info@nularksolutions',
+    companyNo : '875938576',
+    copyrightSentence : 'CopyRight @2023 Karan Pandit | All Rights Reserved'
   },
 };
 

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Button, Card, Chip, DialogContent, DialogTitle, FormControl, FormLabel, Input, Modal, ModalDialog, Stack, SvgIcon, styled } from "@mui/joy";
+import { AspectRatio, Box, Button, ButtonGroup, Card, CardOverflow, Chip, DialogContent, DialogTitle, Divider, FormControl, FormLabel, Input, Modal, ModalClose, ModalDialog, Stack, SvgIcon, styled } from "@mui/joy";
 import CardCover from "@mui/joy/CardCover";
 import CardContent from "@mui/joy/CardContent";
 import Typography from "@mui/joy/Typography";
@@ -52,12 +52,14 @@ export default function CARD({ img, title, desc, price }) {
 
   return (
     <>
-    <Card sx={{ minHeight: "280px", width: "auto" }}>
-    <Typography  onClick={handleOpen}  sx={{zIndex : 112, textAlign : 'center', borderRadius : '50%', cursor : 'pointer', background : 'white', width : 'fit-content'}} variant="body1" color="initial"><Edit/></Typography>
-      <CardCover>
-   
+    <Card sx={{ minHeight: "280px", width: "auto", boxShadow : '2px', filter : 'drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.25))' }}>
+
+  
+    <CardOverflow>
+      <AspectRatio minHeight={300} maxHeight={400} sx={{height : '100%', boxShadow : '0px 1px 1px 0px rgba(0, 0, 0, 0.25)'}}>
+      
         <img
-          style={{ height: "100%" }}
+          style={{ height: "100%"}}
           src={img}
           srcSet="https://images.unsplash.com/photo-1542773998-9325f0a098d7?auto=format&fit=crop&w=320&dpr=2 2x"
           loading="lazy"
@@ -65,27 +67,23 @@ export default function CARD({ img, title, desc, price }) {
         />
         
 
-      </CardCover>
-      <CardCover
-        sx={{
-          background:
-            "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)",
-        }}
-      />
+      </AspectRatio>
+   <Edit  onClick={handleOpen}  sx={{fontSize : 20,padding : '.5vmax', marginTop : '.2vmax',marginBottom : '-1vmax',  zIndex : 112,alignSelf : 'flex-end', borderRadius : '50%', cursor : 'pointer', background : 'whitesmoke'}}/>
 
       
+      </CardOverflow>
       <CardContent
         sx={{
           display: "flex",
           justifyContent: "flex-end",
           flexDirection: "column",
+         
         }}
       >
     
 
-        <Chip sx={{}}>Price : {price}</Chip>
 
-        <Typography level="body-md" textColor="#fff">
+        <Typography level="title-lg" sx={{margin : '.5vmax'}} textColor="#000">
           {title}
         </Typography>
 
@@ -94,19 +92,28 @@ export default function CARD({ img, title, desc, price }) {
             transition: "ease-in",
             transitionDuration: ".8s",
             msTransitionProperty: "all",
+            color : 'black',
+            margin : ' 0px .5vmax 1vmax'
           }}
           level="body-sm"
-          startDecorator={<LocationOnRoundedIcon />}
-          textColor="neutral.300"
+         
+          
         >
           {desc}
         </Typography>
+        <Button variant="solid" color="neutral"   sx={{bgcolor : '#000', color : '#fff', padding : '.9vmax', filter : 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))'}}>Price : {price}</Button>
+
       </CardContent>
     </Card>
-    <Modal open={open} onClose={() => setOpen(false)}>
-            <ModalDialog sx={{backgroundImage : `linear-gradient(45deg , black,transparent)`}}>
-              <DialogTitle sx={{fontSize : 25, textAlign : 'center', width : '100%'}}>Update Card</DialogTitle>
-              <DialogContent>Fill data to update Card</DialogContent>
+   
+    <Modal 
+    open={open} onClose={() => setOpen(false)}>
+            <ModalDialog >
+            {/* <ModalClose variant="plain" sx={{ mb: 1 }} /> */}
+            <ModalClose variant="plain" sx={{ mb  :1 }} />
+              <DialogTitle sx={{ fontSize: 25, display : 'flex', justifyContent : 'center', mt : 2  }}>Update Card</DialogTitle>
+              <Divider/>
+              <DialogContent sx={{ backgroundColor : 'whitesmoke', padding : '.5vmax', width : 'fit-content' }}>Fill data to update Card</DialogContent>
               <form onSubmit={handleSubmit(modifyCard)}>
                 <Stack spacing={2}>
                   <FormControl>
@@ -129,7 +136,7 @@ export default function CARD({ img, title, desc, price }) {
                     defaultValue={cardDescription}
                      {...register("description", {required: true})}
                       color="neutral"
-                     variant="plain"
+                    
                       placeholder="Description"
                      
                       id="modal-modal-description"
@@ -144,7 +151,7 @@ export default function CARD({ img, title, desc, price }) {
                     defaultValue={cardPrice}
                      {...register("price", {required: true})}
                       color="neutral"
-                     variant="plain"
+                    
                       placeholder="Price"
                      
                       id="modal-modal-description"
@@ -159,7 +166,7 @@ export default function CARD({ img, title, desc, price }) {
                     role={undefined}
                     tabIndex={-1}
                     variant="outlined"
-                    color="warning"
+                    color="neutral"
                     startDecorator={
                       <SvgIcon>
                         <svg
@@ -187,7 +194,7 @@ export default function CARD({ img, title, desc, price }) {
                     />
                   </Button>
                   </FormControl>
-                  <Button color="neutral" type="submit">
+                  <Button color="neutral" type="submit" sx={{bgcolor : '#000', color : '#fff', padding : '.9vmax', filter : 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))'}}>
                     Submit
                   </Button>
                 </Stack>

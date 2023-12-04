@@ -1,7 +1,21 @@
 body{
   background: rgb(235, 233, 233);
+ 
 }
+
 
 body::-webkit-scrollbar{
   display:  none;
 }
+
+.textBox{
+  opacity: 1;
+  position: relative;
+}
+
+
+.container{
+  position: absolute;
+  opacity: .6;
+}
+

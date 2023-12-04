@@ -150,9 +150,9 @@ export default function Login() {
               },
             }}
           >
-            <Stack gap={4} sx={{ mb: 2 }}>
-              <Stack textAlign={'center'} gap={1}>
-                <Typography level="h3" padding={1} sx={{width : 'fit-content', margin : 'auto'}}  borderBottom={'1px solid white'}>Sign in</Typography>
+            <Stack gap={1.4} sx={{ mb: 2 }}>
+              <Stack textAlign={'center'} >
+                <Typography level="h2" padding={0} sx={{width : 'fit-content', margin : 'auto'}}  >Sign in</Typography>
               
               </Stack>
               <Stack gap={4} sx={{ mt: 1 }}>

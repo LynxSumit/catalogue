@@ -5,36 +5,37 @@ import Dropdown from '@mui/joy/Dropdown';
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
 import MenuItem from '@mui/joy/MenuItem';
-import {  AccountCircle, Category } from '@mui/icons-material';
+import { Menu as MenuIcon } from '@mui/icons-material';
+import {   Category } from '@mui/icons-material';
 export default function Navbar() {
   return (
     <Box
       sx={{
-        bgcolor : '#555e68',
+        bgcolor : '#FFF',
         display: 'flex',
         flexGrow: 1,
+        width : '100vw',
+        flexDirection : 'row-reverse',
         justifyContent: 'space-between',
-        height : '10vh'
+        height : '88px',
+        boxShadow : '0px 4px 4px 0px rgba(0, 0, 0, 0.25)'
+   
       }}
     >
       <Stack
-        direction="row"
+      
         justifyContent="center"
         alignItems="center"
+        
         spacing={1}
-        sx={{ display: { xs: 'none', sm: 'flex' }, marginLeft : '2vmax' }}
+        sx={{ display:  'flex',margin : '2vmax',   }}
       >
     
-      <Category  sx={{color : 'whitesmoke', fontSize : 30}}/>
+      <Category  sx={{color : '#000', height : '34px', width : '34px'}}/>
        
        
       </Stack>
-      <Box sx={{ display: { xs: 'inline-flex', sm: 'none' } }}>
-        <IconButton variant="plain" color="neutral" >
-          <Category sx={{fontSize : 30, marginLeft : '2vmax',color : 'whitesmoke'}} />
-        </IconButton>
-       
-      </Box>
+      
 
       <Box
         sx={{
@@ -48,13 +49,13 @@ export default function Navbar() {
         
         <Dropdown  >
   <MenuButton
-  sx={{marginRight : "1.3vmax"}}
+  sx={{margin : "2vmax"}}
     slots={{ root: IconButton }}
     slotProps={{ root: { variant: 'outlined', color: 'secondary',  } }}
   >
-    <AccountCircle sx={{fontSize : 30,color : 'whitesmoke'}}   />
+    <MenuIcon sx={{height : '34px', width : '34px',  color : '#000'}}   />
   </MenuButton>
-  <Menu  >
+  <Menu sx={{margin : '2vmax'}} >
     <MenuItem>Profile</MenuItem>
     <MenuItem>Logout</MenuItem>
   </Menu>

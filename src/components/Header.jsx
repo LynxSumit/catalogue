@@ -8,11 +8,13 @@ import {
   Button,
   DialogContent,
   DialogTitle,
+  Divider,
   FormControl,
   FormLabel,
   Grid,
   Input,
   Modal,
+  ModalClose,
   ModalDialog,
   Sheet,
   Stack,
@@ -66,55 +68,63 @@ const Header = () => {
     <Sheet
       sx={{
         borderRadius: "0px",
-        position: "relative",
-        backgroundColor: "grey.800",
-        color: "#fff",
+        color: `${headerColor}`,
         mb: 1,
-
+        width: "100vw",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-
-        backgroundImage: `linear-gradient(45deg , ${headerColor},transparent) ,url(${headerbackground})`,
+        backgroundImage: `linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.5)),  url(${headerbackground}) `,
       }}
     >
-      <Grid item>
-        <Button
+      <Grid>
+        <Edit
+          onClick={handleOpen}
+          color="inherit"
           sx={{
-            display: { xs: "none", md: "block" },
-            textAlign: "center",
-            float: "inline-end",
-            padding: ".6vmax",
-            bgcolor: "white",
+            fontSize: 30,
+            display: { xs: "none", md: "flex" },
+            justifyContent: "center",
+            alignItems: "center",
             borderRadius: "50%",
+            color: "black",
+            float: "inline-end",
+            bgcolor: `#fff`,
+            padding: ".5vmax",
+            cursor: "pointer",
+            opacity: 1,
             margin: "1vmax",
           }}
-          onClick={handleOpen}
-          variant="subtitle1"
-          to="#"
-        >
-          <Edit color="error" sx={{ fontSize: 30 }} />
-        </Button>
+        />
+        
         <Grid container>
           <Box
             sx={{
               display: "flex",
               justifyContent: "center",
               width: "100vw",
-              height: "30vh",
+              height: "354px",
               flexDirection: "column",
               textAlign: "center",
               marginTop: "2vmax",
+              paddingX: 2,
+              // zIndex: 3000,
             }}
           >
-            <Typography level="h1" variant="h" color="warning" gutterBottom>
+            <Typography
+              // level="h1"
+              // variant="plain"
+              color="primary"
+              sx={{ color: `white`, fontWeight : '400', fontSize  :'60px', lineHeight : '71.94px', fontStyle : 'Inria Serif' }}
+              gutterBottom
+            >
               {headerTitle}
             </Typography>
 
             <Typography
               textOverflow={"clip"}
-              sx={{ wordWrap: "break-word" }}
-              level="h3"
+              sx={{ wordWrap: "break-word", color: `white`, fontSize : '22px', fontWeight : '300', fontStyle : 'Inria Serif', lineHeight : '26.38px' }}
+              level="body-lg"
               color="neutral"
               paragraph
             >
@@ -122,35 +132,49 @@ const Header = () => {
             </Typography>
           </Box>
           <Box display={"flex"} justifyContent={"space-between"} width={"100%"}>
-            <Button
-              sx={{
-                display: { xs: "block", md: "none" },
-                textAlign: "center",
-                float: "inline-end",
-                padding: ".6vmax",
-                bgcolor: "white",
-                borderRadius: "50%",
-                margin: "1vmax",
-              }}
-              onClick={handleOpen}
-              variant="subtitle1"
-              to="#"
-            >
-              <Edit color="error" sx={{ fontSize: 30 }} />
+            <Button variant="subtitle1" to="#">
+              <Edit
+                onClick={handleOpen}
+                color="inherit"
+                sx={{
+                  display: { xs: "block", md: "none" },
+                  fontSize: 30,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "50%",
+                  color: "#000",
+                  float: "inline-end",
+                  bgcolor: `#fff`,
+                  padding: ".5vmax",
+                  cursor: "pointer",
+                  margin: "1vmax",
+                }}
+              />
             </Button>
           </Box>
           <Modal open={open} onClose={() => setOpen(false)}>
-            <ModalDialog
-              sx={{
-                backgroundImage: `linear-gradient(45deg , ${headerColor},transparent)`,
-              }}
-            >
+            <ModalDialog>
+              <ModalClose variant="plain" sx={{ mb: 1 }} />
               <DialogTitle
-                sx={{ fontSize: 25, textAlign: "center", width: "100%" }}
+                sx={{
+                  fontSize: 25,
+                  display: "flex",
+                  justifyContent: "center",
+                  mt: 2,
+                }}
               >
                 Update Header
               </DialogTitle>
-              <DialogContent>Fill data to update Header</DialogContent>
+              <Divider />
+              <DialogContent
+                sx={{
+                  backgroundColor: "whitesmoke",
+                  padding: ".5vmax",
+                  width: "fit-content",
+                }}
+              >
+                Fill data to update Header
+              </DialogContent>
               <form onSubmit={handleSubmit(modifyHeader)}>
                 <Stack spacing={2}>
                   <FormControl>
@@ -170,10 +194,9 @@ const Header = () => {
                       defaultValue={headersubTitle}
                       {...register("subTitle", { required: true })}
                       color="neutral"
-                      // autoFocus
-                      variant="plain"
-                      placeholder="Sub-Title"
-                      id="modal-modal-description"
+                      autoFocus
+                      placeholder="Subtitle"
+                      fullWidth={false}
                     />
                   </FormControl>
                   <FormControl>
@@ -194,7 +217,7 @@ const Header = () => {
                       role={undefined}
                       tabIndex={-1}
                       variant="outlined"
-                      color="warning"
+                      color="neutral"
                       startDecorator={
                         <SvgIcon>
                           <svg
@@ -221,7 +244,7 @@ const Header = () => {
                       />
                     </Button>
                   </FormControl>
-                  <Button color="neutral" type="submit">
+                  <Button color="neutral" type="submit" sx={{bgcolor : '#000', color : '#fff', padding : '.9vmax', filter : 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))'}}>
                     Submit
                   </Button>
                 </Stack>
